@@ -3,7 +3,7 @@
   <Import Project="../common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFrameworks>net47</TargetFrameworks>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
