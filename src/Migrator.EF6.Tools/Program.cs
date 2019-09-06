@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Microsoft.Extensions.Internal;
 
 namespace Migrator.EF6.Tools
@@ -62,7 +64,13 @@ namespace Migrator.EF6.Tools
 			Console.WriteLine();
 
 			var runtime = GetRuntimeOption(args) ?? string.Empty;
-			var toolPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, "dotnet-ef6.exe");
+			var executableFileName =
+			#if NETCOREAPP
+				"dotnet-ef6.dll";
+			#else
+				"dotnet-ef6.exe";
+			#endif
+			var toolPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, executableFileName);
 			var assemblyPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, projectFile.Name + ".exe");
 
 			var dispatchCommand = DotnetToolDispatcher.CreateDispatchCommand(
