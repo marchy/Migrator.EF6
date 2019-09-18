@@ -26,7 +26,7 @@
 		<PackageReference Include="Microsoft.DotNet.Cli.Utils" Version="2.0.0" />
 		<PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
 		<PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
-    <PackageReference Include="EntityFramework" Version="6.3.0-preview9-19423-04" />
+    <PackageReference Include="EntityFramework" Version="6.3.0-rc1-19458-04" />
   </ItemGroup>
 
 </Project>

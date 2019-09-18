@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.3.0-preview9-19423-04" />  
+    <PackageReference Include="EntityFramework" Version="6.3.0-rc1-19458-04" />  
   </ItemGroup>
 
   <ItemGroup>
