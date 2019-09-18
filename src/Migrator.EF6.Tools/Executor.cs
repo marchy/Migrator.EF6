@@ -1,5 +1,3 @@
-#if NET46
-
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -111,7 +109,7 @@ namespace Migrator.EF6.Tools
 			{
 				foreach (var r in resources)
 				{
-					writer.AddResource(r.Key, r.Value);
+					writer.AddResource(r.Key, (string)r.Value);
 				}
 			}
 		}
@@ -287,5 +285,3 @@ namespace Migrator.EF6.Tools
 		private void LogVerbose(string message) => Program.LogVerbose(message);
 	}
 }
-
-#endif

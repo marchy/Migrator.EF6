@@ -62,7 +62,7 @@ namespace Migrator.EF6.Tools
 			Console.WriteLine();
 
 			var runtime = GetRuntimeOption(args) ?? string.Empty;
-			var toolPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, "dotnet-ef6.exe");
+			var toolPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, "dotnet-ef6.dll");
 			var assemblyPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, projectFile.Name + ".exe");
 
 			var dispatchCommand = DotnetToolDispatcher.CreateDispatchCommand(
