@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.CommandLineUtils;
+﻿#if NET46
+
+using Microsoft.Extensions.CommandLineUtils;
 
 namespace Migrator.EF6.Tools
 {
@@ -7,3 +9,5 @@ namespace Migrator.EF6.Tools
 		public CommonConfiguration Common(CommandLineApplication command) => new CommonConfiguration(command);
 	}
 }
+
+#endif

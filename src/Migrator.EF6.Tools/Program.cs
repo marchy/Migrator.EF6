@@ -12,33 +12,25 @@ namespace Migrator.EF6.Tools
 
 		public static int Main(string[] args)
 		{
-			// Temp: We have to store this somewhere.
-			var runtime = GetRuntimeOption(args) ?? string.Empty;
-			Project.Runtime = runtime;
-
-			return Worker.Execute(args);
-
-			// Dispatching not needed at all anymore?
-
-			//if (DotnetToolDispatcher.IsDispatcher(args))
-			//{
-			//	Dispatch(args);
-			//	return 0;
-			//}
-			//else
-			//{
-			//	try
-			//	{
-			//		DotnetToolDispatcher.EnsureValidDispatchRecipient(ref args);
-			//		return Worker.Execute(args);
-			//	}
-			//	catch (OperationException ex)
-			//	{
-			//		Console.ForegroundColor = ConsoleColor.Red;
-			//		Console.WriteLine(ex.Message);
-			//		return 1;
-			//	}
-			//}
+			if (DotnetToolDispatcher.IsDispatcher(args))
+			{
+				Dispatch(args);
+				return 0;
+			}
+			else
+			{
+				try
+				{
+					DotnetToolDispatcher.EnsureValidDispatchRecipient(ref args);
+					return Worker.Execute(args);
+				}
+				catch (OperationException ex)
+				{
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine(ex.Message);
+					return 1;
+				}
+			}
 		}
 
 		private static void Dispatch(string[] args)
@@ -70,7 +62,7 @@ namespace Migrator.EF6.Tools
 			Console.WriteLine();
 
 			var runtime = GetRuntimeOption(args) ?? string.Empty;
-			var toolPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, "dotnet-ef6.dll");
+			var toolPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, "dotnet-ef6.exe");
 			var assemblyPath = Path.Combine(projectFile.ProjectDirectory, "bin", "Debug", framework.TFM, runtime, projectFile.Name + ".exe");
 
 			var dispatchCommand = DotnetToolDispatcher.CreateDispatchCommand(

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if NET46
+
+using System;
 using System.Reflection;
 
 namespace Migrator.EF6.Tools.Extensions
@@ -20,3 +22,5 @@ namespace Migrator.EF6.Tools.Extensions
 		}
 	}
 }
+
+#endif

@@ -13,14 +13,12 @@
 		<PackageProjectUrl>https://github.com/mrahhal/Migrator.EF6</PackageProjectUrl>
 		<PackageLicenseUrl>https://github.com/mrahhal/Migrator.EF6/blob/master/LICENSE.txt</PackageLicenseUrl>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
-    <PackageType>DotnetTool</PackageType>
-    <PackAsTool>true</PackAsTool>
+		<PackageType>DotnetTool</PackageType>
+		<PackAsTool>true</PackAsTool>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="ResourceTemplate.txt" />
-		<EmbeddedResource Include="ConfigurationTemplate.txt" />
-		<EmbeddedResource Include="ResourceTemplate.txt" />
+		<EmbeddedResource Include="ConfigurationTemplate.txt" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
 	</ItemGroup>
 
 	<ItemGroup>
